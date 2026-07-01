@@ -48,15 +48,21 @@ public class MainActivity extends AppCompatActivity {
         //Kiểm tra dữ liệu đầu vào (Validation)
         if(input.isEmpty()){
             Toast.makeText(this,"Please enter the temperature in °C you want to convert!", Toast.LENGTH_SHORT).show();
-            return; // Dừng hàm, không xử lý tiếp bên dưới
+            return;
         }
-        //Ép kiểu dữ liệu từ Chuỗi (String) sang Số thực (double)
-        double degreesC = Double.parseDouble(input);
-        // Thực hiện tính toán theo công thức khoa học
-        double degreesF = degreesC * 1.8 + 32;
-        double degreesK = degreesC + 237.15;
-        //Xử lý hiển thị chuỗi kết quả lên màn hình UI
-        textResultKelvin.setText(String.format("Kelvin result: %.2f °K"));
-        textResultFahrenheit.setText(String.format("Fahrenheit result:%.2f °F"));
+
+        try {
+            //Ép kiểu dữ liệu từ Chuỗi (String) sang Số thực (double)
+            double degreesC = Double.parseDouble(input);
+            // Thực hiện tính toán theo công thức khoa học
+            double degreesF = degreesC * 1.8 + 32;
+            double degreesK = degreesC + 273.15; // Công thức chuẩn là 273.15
+
+            //Xử lý hiển thị chuỗi kết quả lên màn hình UI
+            textResultKelvin.setText(String.format("Kelvin result: %.2f °K", degreesK));
+            textResultFahrenheit.setText(String.format("Fahrenheit result: %.2f °F", degreesF));
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Please enter a valid number!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

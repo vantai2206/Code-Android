@@ -51,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
         String email = editEmail.getText().toString().trim();
         String password = editPassword.getText().toString().trim();
 
-        // 1. Kiểm tra lỗi bỏ trống dữ liệu (Validation)
+        // Kiểm tra lỗi bỏ trống dữ liệu (Validation)
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill in all the required information!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // 2. Xử lý RadioButton (Chọn giới tính)
+        // Xử lý RadioButton (Chọn giới tính)
         String gender = "";
         if (radioButton1.isChecked()) {
             gender = "Male";
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             gender = "Not selected";
         }
 
-        // 3. Xử lý CheckBox (Chọn nhiều sở thích)
+        // Xử lý CheckBox (Chọn nhiều sở thích)
         StringBuilder hobbies = new StringBuilder();
         if (game.isChecked()) {
             hobbies.append("Play games, ");
@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             finalHobbies = "None";
         }
 
-        // 4. Hiển thị kết quả tổng hợp
+        // Hiển thị kết quả tổng hợp
         String result = "Name: " + name + "\nEmail: " + email + "\nGender: " + gender + "\nHobbies: " + finalHobbies;
         Toast.makeText(this, "Registration Successful!\n" + result, Toast.LENGTH_LONG).show();
     }
